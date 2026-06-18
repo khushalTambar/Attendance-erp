@@ -1,0 +1,34 @@
+# Python
+backend/venv/
+backend/__pycache__/
+backend/**/*.pyc
+backend/.pytest_cache/
+
+# Environment variables
+backend/.env
+
+# Flask
+backend/instance/
+
+# Migrations cache
+backend/migrations/__pycache__/
+
+# Logs
+backend/logs/
+
+# Node
+frontend/node_modules/
+
+# Vite
+frontend/dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.pid

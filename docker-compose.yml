@@ -1,0 +1,36 @@
+services:
+
+  mysql:
+    image: mysql:8.4
+    container_name: attendance_mysql
+
+    restart: unless-stopped
+
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: attendance_db
+      MYSQL_USER: attendance_user
+      MYSQL_PASSWORD: attendance_password
+      FLASK_APP: manage.py
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build: ./backend
+
+    container_name: attendance_backend
+
+    restart: unless-stopped
+
+    depends_on:
+      - mysql
+
+    ports:
+      - "5000:5000"
+
+    env_file:
+      - ./backend/.env
+
+volumes:
+  mysql_data:
