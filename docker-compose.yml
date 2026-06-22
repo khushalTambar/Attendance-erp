@@ -11,7 +11,6 @@ services:
       MYSQL_DATABASE: attendance_db
       MYSQL_USER: attendance_user
       MYSQL_PASSWORD: attendance_password
-      FLASK_APP: manage.py
 
     volumes:
       - mysql_data:/var/lib/mysql
@@ -31,6 +30,12 @@ services:
 
     env_file:
       - ./backend/.env
+
+    environment:
+      FLASK_APP: manage.py
+
+    volumes:
+      - ./backend:/app
 
 volumes:
   mysql_data:

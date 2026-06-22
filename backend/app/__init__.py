@@ -15,7 +15,7 @@ def create_app():
     migrate.init_app(app, db)
     jwt.init_app(app)
 
-    from app.models import User
+    from app.models import User, Department
 
     @app.route("/")
     def home():
