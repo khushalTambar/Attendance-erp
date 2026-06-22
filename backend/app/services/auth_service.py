@@ -1,5 +1,6 @@
 from app.extensions import db
 from app.models import User
+from flask_jwt_extended import create_access_token
 
 
 class AuthService:
@@ -33,3 +34,31 @@ class AuthService:
         return {
             "message": "User registered successfully."
         }, 201
+        
+    @staticmethod
+    def login(data):
+
+        user = User.query.filter_by(email=data["email"]).first()
+
+        if not user:
+            return {
+                "message": "Invalid email or password."
+            }, 401
+
+        if not user.check_password(data["password"]):
+            return {
+                "message": "Invalid email or password."
+            }, 401
+
+        access_token = create_access_token(
+            identity=str(user.id),
+            additional_claims={
+                "email": user.email,
+                "role": user.role
+            }
+        )
+
+        return {
+            "message": "Login successful.",
+            "access_token": access_token
+        }, 200
