@@ -1,0 +1,1 @@
+from app.schemas.department_schema import DepartmentSchema

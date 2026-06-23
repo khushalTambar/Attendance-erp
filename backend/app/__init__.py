@@ -4,6 +4,7 @@ from app.config import Config
 from app.extensions import db, migrate, jwt
 from app.models import User
 from app.routes.auth import auth_bp
+from app.routes.department import department_bp
 
 
 def create_app():
@@ -25,5 +26,6 @@ def create_app():
         }
 
     app.register_blueprint(auth_bp)
+    app.register_blueprint(department_bp)
 
     return app
