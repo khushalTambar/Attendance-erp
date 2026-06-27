@@ -5,6 +5,7 @@ from app.extensions import db, migrate, jwt
 from app.models import User
 from app.routes.auth import auth_bp
 from app.routes.department import department_bp
+from app.routes.employee import employee_bp
 
 
 def create_app():
@@ -16,7 +17,7 @@ def create_app():
     migrate.init_app(app, db)
     jwt.init_app(app)
 
-    from app.models import User, Department
+    from app.models import User, Department , Employee
 
     @app.route("/")
     def home():
@@ -27,5 +28,6 @@ def create_app():
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(department_bp)
+    app.register_blueprint(employee_bp)
 
     return app
