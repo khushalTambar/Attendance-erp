@@ -7,6 +7,7 @@ from app.routes.auth import auth_bp
 from app.routes.department import department_bp
 from app.routes.employee import employee_bp
 from app.routes.attendance import attendance_bp
+from app.routes.leave import leave_bp
 
 def create_app():
     app = Flask(__name__)
@@ -30,5 +31,6 @@ def create_app():
     app.register_blueprint(department_bp)
     app.register_blueprint(employee_bp)
     app.register_blueprint(attendance_bp)
+    app.register_blueprint(leave_bp)
 
     return app
